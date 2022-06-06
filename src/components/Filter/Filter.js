@@ -1,7 +1,11 @@
+import { useSelector, useDispatch } from 'react-redux';
+import contactsActions from 'redux/contacts-actions';
+import { getFilter } from 'redux/contacts-selectors';
 import styles from './Filter.module.css';
-import propTypes from 'prop-types';
 
-const Filter = ({ value, onChange }) => {
+const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
   return (
     <label>
       Find contacts by name
@@ -9,16 +13,11 @@ const Filter = ({ value, onChange }) => {
         className={styles.inp}
         type="text"
         name="filter"
-        value={value}
-        onChange={onChange}
+        value={filter}
+        onChange={e => dispatch(contactsActions.changeFilter(e.target.value))}
       />
     </label>
   );
-};
-
-Filter.propTypes = {
-  onChange: propTypes.func.isRequired,
-  value: propTypes.string.isRequired,
 };
 
 export default Filter;
