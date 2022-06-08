@@ -7,7 +7,6 @@ const App = () => {
   return (
     <div className={styles.container}>
       <ContactForm />
-
       <Filter />
       <h1>Contacts</h1>
       <ContactsList />

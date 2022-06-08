@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
 import styles from './ContactsListItem.module.css';
 import propTypes from 'prop-types';
-import contactsActions from 'redux/contacts-actions';
+
+import { useDelContactMutation } from 'redux/contacts-slice';
 
 const ContactListItem = ({ name, number, id }) => {
-  const dispatch = useDispatch();
+  const [delContact, { isLoading: isUpdating }] = useDelContactMutation();
+
   return (
     <li className={styles.li}>
       <span>
@@ -13,9 +14,9 @@ const ContactListItem = ({ name, number, id }) => {
       <button
         className={styles.btnDel}
         type="button"
-        onClick={() => dispatch(contactsActions.delContact(id))}
+        onClick={() => delContact(id)}
       >
-        Delete
+        {isUpdating ? 'isDeliting...' : 'Delete'}
       </button>
     </li>
   );

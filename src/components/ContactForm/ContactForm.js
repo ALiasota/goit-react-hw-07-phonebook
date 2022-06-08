@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './ContactForm.module.css';
 import { getContacts } from 'redux/contacts-selectors';
 import contactsActions from 'redux/contacts-actions';
+import { useFetchContactsQuery } from 'redux/contacts-slice';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
