@@ -3,13 +3,13 @@ import propTypes from 'prop-types';
 
 import { useDelContactMutation } from 'redux/contacts-slice';
 
-const ContactListItem = ({ name, number, id }) => {
+const ContactListItem = ({ name, phone, id }) => {
   const [delContact, { isLoading: isUpdating }] = useDelContactMutation();
 
   return (
     <li className={styles.li}>
       <span>
-        {name}: {number}
+        {name}: {phone}
       </span>
       <button
         className={styles.btnDel}
@@ -25,7 +25,7 @@ const ContactListItem = ({ name, number, id }) => {
 ContactListItem.propTypes = {
   name: propTypes.string.isRequired,
   id: propTypes.string.isRequired,
-  number: propTypes.string.isRequired,
+  phone: propTypes.string.isRequired,
 };
 
 export default ContactListItem;
